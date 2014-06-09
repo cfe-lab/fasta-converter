@@ -16,7 +16,8 @@ def toFasta(lines, delim="_"):
 	return lines
 
 def toCsv(lines):
-	result = re.findall('(>.+[\\n\\r\\n])([VLIMFWPSCYNQDEKRH\\*\\-ACTGRYKMSWBHDVN\\:\\n\\r\\n]+)', lines, re.IGNORECASE)
+	#result = re.findall('(>.+[\\n\\r\\n])([XVLIMFWPSCYNQDEKRH\\*\\-ACTGRYKMSWBHDVN\\:\\n\\r\\n]+)', lines, re.IGNORECASE)
+	result = re.findall(r'(>.+[\n\r]+)([^>]+)',lines,re.IGNORECASE)
 	result = [y.translate(None, '\n\r\n').upper() for x in result for y in x]
 	return result
 
