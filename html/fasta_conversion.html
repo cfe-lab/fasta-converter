@@ -3,14 +3,27 @@
 <HTML>
 <head>
 <link rel="stylesheet" href="../css/style.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="../cgi-bin/script.js"></script>
 <title>Fasta Converter</title>
 </head>
 
 <div class="container">
-	<form action="../cgi-bin/fasta_conversion.py" method="post" id="form">
-	<textarea placeholder="Enter fasta or excel data here" name="textinput" form="form" required></textarea>
-	<!-- <input type="file" name="datafile" size="40"> -->
-	<div class="row">
+	<form enctype="multipart/form-data" action="../cgi-bin/fasta_conversion.py" method="post" id="form">
+    <div class="row">
+        <div class="col-md-9">
+	        <textarea placeholder="Enter fasta or excel data here" id="textinput" name="textinput" form="form" required></textarea>
+	        <div id="clearbutton" class="hide">Clear</div>
+        </div>
+        <div class="col-md-3">
+            <div class="info-box">
+                <h2>Upload Fasta File:</h2>
+                <input type="file" name="datafile" size="40">
+	        </div>
+        </div>
+    </div>
+	<div class="spacer"></div>
+    <div class="row">
 		<div class="col-md-6">
 			<div class="info-box">
 				<h2>Options</h2>

@@ -53,28 +53,65 @@ li {
 }
 
 .container {
-        max-width: 1050px;
+        max-width: 1200px;
         margin: 0 auto;
 }
 
+@mixin border-radius($values) {
+    -moz-border-radius: $values;
+    -webkit-border-radius: $values;
+    border-radius: $values;
+}
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {@content}
+    &:-moz-placeholder {@content}
+    &::-moz-placeholder {@content}
+    &:-ms-input-placeholder {@content}
+}
+
 textarea {
-        display: block;
-		border: none;
-		@include box-shadow(0 0 7px grey inset);
-		//@include box-shadow(0 15px 5px -10px grey);
-        width: 100%;
-        min-height: 250px;
-        margin: 0 auto;
-		font-size: 14px;
-		margin-bottom: 10px;
-		border-radius: 10px;
-		padding: 10px;
+	padding: 20px;
+	display: block;
+	margin: 0 auto;
+	border: none;
+	width: 100%;
+	@include border-radius(50px 0 50px 0);
+	min-height: 200px;
+	background-color: #E9E9E9;
+	@include transition(all ease-out 0.1s);
+	&:focus {
 		outline: none;
-		@include transition(background-color 0.2s);
-		&:focus {
-			@include transition(background-color 0.2s);
-			background-color: #dbffb7;
-		}
+		background-color: lighten($theme,20%);
+	@include placeholder {
+		color: #FFF;
+		opacity: 1;
+	}
+	@include transition(all ease-out 0.1s);
+	}
+}
+
+.spacer {
+    margin: 10px 0 0 0;
+}
+
+#clearbutton {
+	$color: #ff4c4c;
+	background-color: $color;
+	text-align: center;
+	color: white;
+	height: 20px;
+	max-width: 50%;
+	@include transition(height ease-out 0.2s);
+	&:active {
+		background-color: darken($color,30%);
+	}
+	&.hide {
+		display: block !important;
+		@include transition(height ease-out 0.2s);
+		font-size: 0;
+		height: 0;
+	}
 }
 
 @mixin appearance($value) {
@@ -183,13 +220,4 @@ textarea {
 
 div[class*='col-'].description {
 	font-style: italic;
-}
-
-input[type=checkbox] {
-	~ label {
-		//background-color: red;
-	}
-	&:checked ~ label {
-		//background-color: green;
-	}
 }
