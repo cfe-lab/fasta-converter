@@ -2,10 +2,10 @@
 
 <HTML>
 <head>
-<link rel="stylesheet" href="../css/style.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="../cgi-bin/script.js"></script>
-<title>Fasta Converter</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="script.js"></script>
+	<title>Fasta Converter</title>
 </head>
 
 <div class="container">
@@ -18,7 +18,7 @@
         <div class="col-md-3">
             <div class="info-box">
                 <h2>Upload Fasta File:</h2>
-                <input type="file" name="datafile" size="40">
+                <input id="datafile" type="file" name="datafile" size="40">
 	        </div>
         </div>
     </div>
@@ -33,18 +33,19 @@
 					<option value = "/">forward slash: /</option>
 					<option value = "-">dash: -</option>
 					<option value = ".">period: .</option>
+					<option value = " ">whitespace: &nbsp;</option>
 				</select>
 				<div class="row checkbox">
 					<div class="col-md-6">
 						<input type="checkbox" id="cboxOne" value="on" name="splitfastaheader" checked>
-						<label for="cboxOne">Split faster header by delimiter</label>
+						<label for="cboxOne">Split fasta header by delimiter</label>
 					</div>
 					<div class="col-md-6 description">
 						If you would like your fasta header to be broken up into its constituent parts, enable this option. The header
 						will be split based on the delimiter selection above.
 					</div>
 				</div>
-				<div class="row checkbox">
+				<div class="row checkbox" id="whitespace-strip">
 					<div class="col-md-6">
 						<input type="checkbox" id="cboxTwo" value="on" name="stripwhitespace" checked>
 						<label for="cboxTwo">Strip whitespace from fasta headers</label>
